@@ -7,6 +7,10 @@ enum {
     TD_NUM_BLOQ,
 };
 
+enum custom_keycodes {
+    CALC,
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /*
      * ┌───┬───┬───┬───┐
@@ -86,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [3] = LAYOUT_numpad_5x4(
         _______, _______, _______, _______,
-        KC_F13,  KC_F14,  KC_F15,
+        CALC,  KC_F14,  KC_F15,
         KC_F16,  KC_F17,  KC_F18,   XXXXXXX,
         KC_F19,  KC_F20,  KC_F21,
         QK_BOOT,          XXXXXXX, XXXXXXX
@@ -115,6 +119,19 @@ void switch_layer(tap_dance_state_t *state, void *user_data) {
         default:
             break;
     }
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch(keycode) {
+        case CALC:
+            if(record->event.pressed) {
+                SEND_STRING(SS_DOWN(X_LGUI) SS_TAP(X_R) SS_UP(X_LGUI) SS_DELAY(50) "calc" SS_TAP(X_ENTER));
+            } else {
+                //
+            }
+            break;
+    }
+    return true;
 }
 
 // Associate our tap dance key with its functionality
