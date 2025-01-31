@@ -168,8 +168,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case GITHUB:
             if(record->event.pressed) {
                 SEND_STRING(
-                    SS_DOWN(X_LGUI) SS_TAP(X_R) SS_UP(X_LGUI) SS_DELAY(50) "firefox" SS_TAP(X_ENTER)
-                    SS_DOWN(X_LGUI) SS_TAP(X_T) SS_UP(X_LGUI) SS_DELAY(50) "http://github.com/thewickest" SS_TAP(X_ENTER));
+                    SS_DOWN(X_LGUI) SS_TAP(X_R) SS_UP(X_LGUI) SS_DELAY(50) "firefox" SS_TAP(X_ENTER) SS_DELAY(1000)
+                    SS_DOWN(X_LCTL) SS_TAP(X_T) SS_UP(X_LCTL) SS_DELAY(50) "https://github.com/thewickest" SS_TAP(X_ENTER));
             } else {
                 //
             }
@@ -177,8 +177,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case EMAIL:
             if(record->event.pressed) {
                 SEND_STRING(
-                    SS_DOWN(X_LGUI) SS_TAP(X_R) SS_UP(X_LGUI) SS_DELAY(50) "firefox" SS_TAP(X_ENTER)
-                    SS_DOWN(X_LGUI) SS_TAP(X_T) SS_UP(X_LGUI) SS_DELAY(50) "https://mail.google.com" SS_TAP(X_ENTER));
+                    SS_DOWN(X_LGUI) SS_TAP(X_R) SS_UP(X_LGUI) SS_DELAY(50) "firefox" SS_TAP(X_ENTER) SS_DELAY(100)
+                    SS_DOWN(X_LCTL) SS_TAP(X_T) SS_UP(X_LCTL) SS_DELAY(50) "https://mail.google.com" SS_TAP(X_ENTER));
             } else {
                 //
             }
@@ -186,8 +186,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CALENDAR:
             if(record->event.pressed) {
                 SEND_STRING(
-                    SS_DOWN(X_LGUI) SS_TAP(X_R) SS_UP(X_LGUI) SS_DELAY(50) "firefox" SS_TAP(X_ENTER)
-                    SS_DOWN(X_LGUI) SS_TAP(X_T) SS_UP(X_LGUI) SS_DELAY(50) "https://calendar.google.com" SS_TAP(X_ENTER));
+                    SS_DOWN(X_LGUI) SS_TAP(X_R) SS_UP(X_LGUI) SS_DELAY(50) "firefox" SS_TAP(X_ENTER) SS_DELAY(100)
+                    SS_DOWN(X_LCTL) SS_TAP(X_T) SS_UP(X_LCTL) SS_DELAY(50) "https://calendar.google.com" SS_TAP(X_ENTER));
             } else {
                 //
             }
