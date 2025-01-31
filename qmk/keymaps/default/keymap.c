@@ -9,6 +9,13 @@ enum {
 
 enum custom_keycodes {
     CALC,
+    NOTES,
+    SPOTIFY,
+    VSCODE,
+    FUSION,
+    GITHUB,
+    EMAIL,
+    CALENDAR
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -89,11 +96,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * └───────┴───┘───┘
      */
     [3] = LAYOUT_numpad_5x4(
-        _______, _______, _______, _______,
-        CALC,  KC_F14,  KC_F15,
-        KC_F16,  KC_F17,  KC_F18,   XXXXXXX,
-        KC_F19,  KC_F20,  KC_F21,
-        QK_BOOT,          XXXXXXX, XXXXXXX
+        _______, _______, _______, QK_BOOT,
+        CALC,    NOTES,   KC_F15,
+        SPOTIFY, VSCODE,  FUSION,   XXXXXXX,
+        GITHUB,  EMAIL,   CALENDAR,
+        XXXXXXX,          XXXXXXX, XXXXXXX
     )
 };
 
@@ -126,6 +133,61 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CALC:
             if(record->event.pressed) {
                 SEND_STRING(SS_DOWN(X_LGUI) SS_TAP(X_R) SS_UP(X_LGUI) SS_DELAY(50) "calc" SS_TAP(X_ENTER));
+            } else {
+                //
+            }
+            break;
+        case NOTES:
+            if(record->event.pressed) {
+                SEND_STRING(SS_DOWN(X_LGUI) SS_TAP(X_R) SS_UP(X_LGUI) SS_DELAY(50) "notas" SS_TAP(X_ENTER));
+            } else {
+                //
+            }
+            break;
+        case SPOTIFY:
+            if(record->event.pressed) {
+                SEND_STRING(SS_DOWN(X_LGUI) SS_TAP(X_R) SS_UP(X_LGUI) SS_DELAY(50) "spotify" SS_TAP(X_ENTER));
+            } else {
+                //
+            }
+            break;
+        case VSCODE:
+            if(record->event.pressed) {
+                SEND_STRING(SS_DOWN(X_LGUI) SS_TAP(X_R) SS_UP(X_LGUI) SS_DELAY(50) "code" SS_TAP(X_ENTER));
+            } else {
+                //
+            }
+            break;
+        case FUSION:
+            if(record->event.pressed) {
+                SEND_STRING(SS_DOWN(X_LGUI) SS_TAP(X_R) SS_UP(X_LGUI) SS_DELAY(50) "fusion" SS_TAP(X_ENTER));
+            } else {
+                //
+            }
+            break;
+        case GITHUB:
+            if(record->event.pressed) {
+                SEND_STRING(
+                    SS_DOWN(X_LGUI) SS_TAP(X_R) SS_UP(X_LGUI) SS_DELAY(50) "firefox" SS_TAP(X_ENTER)
+                    SS_DOWN(X_LGUI) SS_TAP(X_T) SS_UP(X_LGUI) SS_DELAY(50) "http://github.com/thewickest" SS_TAP(X_ENTER));
+            } else {
+                //
+            }
+            break;
+        case EMAIL:
+            if(record->event.pressed) {
+                SEND_STRING(
+                    SS_DOWN(X_LGUI) SS_TAP(X_R) SS_UP(X_LGUI) SS_DELAY(50) "firefox" SS_TAP(X_ENTER)
+                    SS_DOWN(X_LGUI) SS_TAP(X_T) SS_UP(X_LGUI) SS_DELAY(50) "https://mail.google.com" SS_TAP(X_ENTER));
+            } else {
+                //
+            }
+            break;
+        case CALENDAR:
+            if(record->event.pressed) {
+                SEND_STRING(
+                    SS_DOWN(X_LGUI) SS_TAP(X_R) SS_UP(X_LGUI) SS_DELAY(50) "firefox" SS_TAP(X_ENTER)
+                    SS_DOWN(X_LGUI) SS_TAP(X_T) SS_UP(X_LGUI) SS_DELAY(50) "https://calendar.google.com" SS_TAP(X_ENTER));
             } else {
                 //
             }
