@@ -8,41 +8,7 @@ enum {
 };
 
 enum custom_keycodes {
-    SPOTIFY = SAFE_RANGE,
-    VS_CODE,
-    KI_KAD,
-};
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-    case SPOTIFY:
-        if (record->event.pressed) {
-            // when keycode QMKBEST is pressed
-            SEND_STRING(SS_LGUI("R")"spotify");
-        } else {
-            // when keycode QMKBEST is released
-        }
-        break;
-    case VS_CODE:
-        if (record->event.pressed) {
-            // when keycode QMKBEST is pressed
-            SEND_STRING(SS_LGUI("R")"code");
-        } else {
-            // when keycode QMKBEST is released
-        }
-        break;
-    case KI_KAD:
-        if (record->event.pressed) {
-            // when keycode QMKBEST is pressed
-            SEND_STRING(SS_LGUI("R")"D:\\Program Files\\KiCad\\7.0\\bin\\kikad.exe");
-        } else {
-            // when keycode QMKBEST is released
-        }
-        break;
-    default:
-        break;
-    }
-    return true;
+    CALC,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -73,7 +39,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ┌───┬───┬───┐───┤
      * │Hom│ ↑ │PgU│   │
      * ├───┼───┼───┤ + │
-     * │ ← │   │ → │   │
+     * │ ← │PrS│ → │   │ - Print Screen
      * ├───┼───┼───┤───┤
      * │End│ ↓ │PgD│   │
      * ├───┴───┼───┤Ent│
@@ -83,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [1] = LAYOUT_numpad_5x4(
         _______, _______, _______, _______,
         KC_HOME, KC_UP,   KC_PGUP,
-        KC_LEFT, XXXXXXX, KC_RGHT, _______,
+        KC_LEFT, KC_PSCR, KC_RGHT, _______,
         KC_END,  KC_DOWN, KC_PGDN,
         KC_INS,           KC_DEL,  _______
     ),
@@ -113,20 +79,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ┌───┬───┬───┬───┐
      * │   │   │   │   │
      * ┌───┬───┬───┐───┤
-     * │   │   │   │   │
+     * │F13│F14│F15│   │
      * ├───┼───┼───┤   │ 
-     * │   │   │   │   │
+     * │F16│F17│F18│   |
      * ├───┼───┼───┤───┤ 
-     * │   │   │   │   │
+     * │F19│F20│F21│   │
      * ├───┴───┼───┤   │ 
      * |Rst│   │   │   | - Put the keyboard in Boot mode
      * └───────┴───┘───┘
      */
     [3] = LAYOUT_numpad_5x4(
         _______, _______, _______, _______,
-        XXXXXXX, XXXXXXX, XXXXXXX,
-        SPOTIFY, VS_CODE, KI_KAD, XXXXXXX,
-        XXXXXXX, XXXXXXX, XXXXXXX,
+        CALC,  KC_F14,  KC_F15,
+        KC_F16,  KC_F17,  KC_F18,   XXXXXXX,
+        KC_F19,  KC_F20,  KC_F21,
         QK_BOOT,          XXXXXXX, XXXXXXX
     )
 };
@@ -153,6 +119,19 @@ void switch_layer(tap_dance_state_t *state, void *user_data) {
         default:
             break;
     }
+}
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch(keycode) {
+        case CALC:
+            if(record->event.pressed) {
+                SEND_STRING(SS_DOWN(X_LGUI) SS_TAP(X_R) SS_UP(X_LGUI) SS_DELAY(50) "calc" SS_TAP(X_ENTER));
+            } else {
+                //
+            }
+            break;
+    }
+    return true;
 }
 
 // Associate our tap dance key with its functionality
