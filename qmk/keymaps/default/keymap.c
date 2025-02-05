@@ -34,10 +34,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [0] = LAYOUT_numpad_5x4(
         TD(TD_NUM_BLOQ), KC_PSLS, KC_PAST, KC_PMNS,
-        KC_P7,   KC_P8,   KC_P9,
-        KC_P4,   KC_P5,   KC_P6,   KC_PPLS,
-        KC_P1,   KC_P2,   KC_P3,
-        KC_P0,   KC_PDOT,          KC_PENT
+        KC_P7,   KC_P8,   KC_P9,   KC_PPLS,
+        KC_P4,   KC_P5,   KC_P6,
+        KC_P1,   KC_P2,   KC_P3,   KC_PENT,
+        KC_P0,            KC_PDOT
     ),
 
         /*
@@ -55,10 +55,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [1] = LAYOUT_numpad_5x4(
         _______, _______, _______, _______,
-        KC_HOME, KC_UP,   KC_PGUP,
-        KC_LEFT, KC_PSCR, KC_RGHT, _______,
-        KC_END,  KC_DOWN, KC_PGDN,
-        KC_INS,           KC_DEL,  _______
+        KC_HOME, KC_UP,   KC_PGUP, _______,
+        KC_LEFT, KC_PSCR, KC_RGHT,
+        KC_END,  KC_DOWN, KC_PGDN, _______,
+        KC_INS,           KC_DEL
     ),
 
     /* Media Keys
@@ -76,10 +76,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [2] = LAYOUT_numpad_5x4(
         _______, _______, _______, _______,
-        XXXXXXX, KC_VOLU, XXXXXXX,
-        KC_MPRV, KC_MPLY, KC_MNXT, XXXXXXX,
-        XXXXXXX, KC_VOLD, XXXXXXX,
-        KC_MUTE,          XXXXXXX, XXXXXXX
+        XXXXXXX, KC_VOLU, XXXXXXX, XXXXXXX,
+        KC_MPRV, KC_MPLY, KC_MNXT,
+        XXXXXXX, KC_VOLD, XXXXXXX, XXXXXXX,
+        KC_MUTE,          XXXXXXX
     ),
 
         /* Media Keys
@@ -96,11 +96,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * └───────┴───┘───┘
      */
     [3] = LAYOUT_numpad_5x4(
-        _______, _______, _______, QK_BOOT,
-        CALC,    NOTES,   KC_F15,
-        SPOTIFY, VSCODE,  FUSION,   XXXXXXX,
-        GITHUB,  EMAIL,   CALENDAR,
-        XXXXXXX,          XXXXXXX, XXXXXXX
+        _______, _______, KC_NUM_LOCK, QK_BOOT,
+        CALC,    NOTES,   KC_F15,  XXXXXXX,
+        SPOTIFY, VSCODE,  FUSION,
+        GITHUB,  EMAIL,   CALENDAR, XXXXXXX,
+        XXXXXXX,          XXXXXXX
     )
 };
 
